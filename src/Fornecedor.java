@@ -8,7 +8,7 @@ public class Fornecedor {
             throw new IllegalArgumentException("O nome não pode ser nulo");
         }
         if(cnpj == null || cnpj.length() != 14){
-            throw new IllegalArgumentException("Precisa ter mais de 14 caracteres");
+            throw new IllegalArgumentException("CPNJ Precisa ter mais de 14 caracteres");
         }
         this.nome = nome;
         this.cnpj = cnpj;
