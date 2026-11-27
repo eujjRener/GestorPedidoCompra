@@ -14,6 +14,11 @@ public class Fornecedor {
         this.cnpj = cnpj;
     }
 
+    @Override
+    public String toString(){
+        return nome + " (CNPJ " + cnpj + ")";
+    }
+
     public String getNome() {
         return nome;
     }

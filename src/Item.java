@@ -21,6 +21,13 @@ public class Item {
         this.valorUnitario = valorUnitario;
     }
 
+    @Override
+    public String toString() {
+        return descricao + " | Qtd: " + quantidade
+                + " | Unit: R$ " + String.format("%.2f", valorUnitario)
+                + " | Subtotal: R$ " + String.format("%.2f", calcularSubtotal());
+    }
+
     public String getDescricao() {
         return descricao;
     }

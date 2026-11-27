@@ -32,6 +32,40 @@ public class PedidoCompra {
         return total;
     }
 
+    @Override
+    public String toString() {
+        String texto = "Pedido #" + id
+                + "\nFornecedor: " + fornecedor
+                + "\nStatus: " + status
+                + "\nItens:";
+
+        for (Item item : itens) {
+            texto += "\n  - " + item;
+        }
+
+        texto += "\nTotal: R$ " + String.format("%.2f", calcularTotal());
+        return texto;
+    }
+
+    //LÓGICA DO PEDIDO APROVADO E RECEBIDO NO SISTEMA
+
+    public void aprovar(){
+        if (status != StatusPedido.ABERTO){
+            throw new IllegalArgumentException("Só é possível aprovar pedidos com status aberto");
+        }
+        if (itens.isEmpty()){
+            throw new IllegalArgumentException("Pedidos sem itens não pode ser aprovado");
+        }
+        status = StatusPedido.APROVADO;
+    }
+
+    public void receber(){
+        if (status != StatusPedido.APROVADO){
+            throw new IllegalArgumentException("Só é possível receber pedidos APROVADOS");
+        }
+        status = StatusPedido.RECEBIDO;
+    }
+
     public int getId() {
         return id;
     }
